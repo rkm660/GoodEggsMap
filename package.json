@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "foreman": "^2.0.0",
@@ -16,7 +17,10 @@
     "mongoose": "^4.10.8",
     "nodemon": "^1.12.1",
     "react": "^16.0.0",
-    "react-iframe": "^1.0.7"
+    "react-iframe": "^1.0.7",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
