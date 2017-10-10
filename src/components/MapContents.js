@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {Map,Marker,GoogleApiWrapper} from 'google-maps-react';
+import {Map,Marker} from 'google-maps-react';
 
 
 const MapContents = ({products, farmers}) => {
 	
 	if (products && farmers){
 		const farmerMarkers = farmers.map(farmer => {
-			console.log(farmer);
+			return (<Marker key={farmer["farmer_ID"]} name={'test'} position={{lat: farmer["farmer_lat"], lng: farmer["farmer_lng"]}} onClick={onMarkerClick} />);
 		});
 		return (
 		  <Map google={window.google}
@@ -16,12 +16,19 @@ const MapContents = ({products, farmers}) => {
 		  </Map>
 		)
 	}
-
 	else {
-		return null;
+		console.log("here");
+		return (
+		  <Map google={window.google}
+		          clickableIcons={false}>
+		  </Map>
+		)
 	}
 }
 	
+const onMarkerClick = (props, marker, e) => {
+	console.log(props,marker,e); 
+}
 
 const mapStateToProps = (state) => ({
 	products: state.data.products,
