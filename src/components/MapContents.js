@@ -64,7 +64,10 @@ class MapContents extends Component {
 								title={farmer["farmer_name"]} 
 								index={this.props.farmers.indexOf(farmer)} 
 								name={farmer["farmer_name"]} position={{lat: farmer["farmer_lat"], lng: farmer["farmer_lng"]}} 
-								onClick={this.onMarkerClick} />);
+								onClick={this.onMarkerClick}
+								icon={{url:"https://" + farmer["farmer_pic"],
+									   anchor: new window.google.maps.Point(32,32),
+      								   scaledSize: new window.google.maps.Size(32,32)}} />);
 			});
 			return (
 			  <Map google={window.google} onReady={this.onMapReady} clickableIcons={false} zoom={3} initialCenter={this.state.initialMapCenter} onClick={this.onMapClick}>
