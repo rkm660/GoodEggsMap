@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
-import { getAllProducts, getAllFarmers } from './actions'
 
 const middleware = [thunk];
 
@@ -16,8 +15,4 @@ ReactDOM.render(
     <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'), () => {
-  	store.dispatch(getAllFarmers())
-	store.dispatch(getAllProducts())
- }
-);
+  document.getElementById('root'));
