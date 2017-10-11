@@ -40,7 +40,7 @@ class MapContents extends Component {
 		this.setState({"selectedInfoWindow": true});
 		this.setState({"activeFarmer": props.index});
 		props.map.panTo(marker.getPosition());
-		props.map.panBy(0,-150);
+		props.map.panBy(0,-200);
 	}
 
 	onMapClick(props, map, e){
@@ -70,11 +70,23 @@ class MapContents extends Component {
 			  <Map google={window.google} onReady={this.onMapReady} clickableIcons={false} zoom={3} initialCenter={this.state.initialMapCenter} onClick={this.onMapClick}>
 			 	{farmerMarkers}
 			 	<InfoWindow marker={this.state.activeMarker} visible={this.state.selectedInfoWindow}>
-				    <div className="text-center">
-				      <h4>{this.props.farmers[this.state.activeFarmer]["farmer_name"]}</h4>
-				      <img alt={this.props.farmers[this.state.activeFarmer]["farmer_name"]} src={"https://" + this.props.farmers[this.state.activeFarmer]["farmer_pic"]} height="60%" width="60%"/>
-				      <a target="_blank" href={this.props.farmers[this.state.activeFarmer]["farmer_website"]}><h6>{this.props.farmers[this.state.activeFarmer]["farmer_website"]}</h6> </a>
-				    </div>
+				    <div>
+					    <div className="text-center row">
+					      <h4>{this.props.farmers[this.state.activeFarmer]["farmer_name"]}</h4>
+					    </div>
+					    <div className="row">
+					      <span className="col-md-6"><img alt={this.props.farmers[this.state.activeFarmer]["farmer_name"]} src={"https://" + this.props.farmers[this.state.activeFarmer]["farmer_pic"]} height="100%" width="100%"/></span>
+					      <span className="col-md-6">
+						      <strong>Vendor Page: </strong><a target="_blank" href={"https://www.goodeggs.com/" + this.props.farmers[this.state.activeFarmer]["farmer_ID"]}><h6>{"goodeggs.com/"+this.props.farmers[this.state.activeFarmer]["farmer_ID"]}</h6> </a>
+						      <strong>Vendor Website: </strong><a target="_blank" href={this.props.farmers[this.state.activeFarmer]["farmer_website"]}><h6>{this.props.farmers[this.state.activeFarmer]["farmer_website"]}</h6> </a>
+					      </span>
+					    </div>
+					    <div className="row info-window-description">
+					    	<span className="col-md-12">
+						      <strong>Description: </strong><h6>{this.props.farmers[this.state.activeFarmer]["farmer_description"]}</h6> 
+					    	</span>
+					    </div>
+					</div>
 				</InfoWindow>
 			  </Map>
 			)
