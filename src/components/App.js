@@ -1,10 +1,11 @@
-import React from 'react'
-import Nav from  './Nav';
+import React from 'react';
 import MapContainer from '../containers/MapContainer';
+import SideBar from './SideBar';
 
 const App = () => (
   <div className="App">
-    <Nav/>
+
+    <SideBar/>
     <MapContainer />
   </div>
 )

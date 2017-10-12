@@ -67,10 +67,15 @@ class MapContents extends Component {
 								onClick={this.onMarkerClick}
 								icon={{url:"https://" + farmer["farmer_pic"],
 									   anchor: new window.google.maps.Point(32,32),
-      								   scaledSize: new window.google.maps.Size(32,32)}} />);
+      								   scaledSize: new window.google.maps.Size(25,25)}} />);
 			});
+
+			const style = {
+   				width: '100%',
+    			height: '100%',
+			};
 			return (
-			  <Map google={window.google} onReady={this.onMapReady} clickableIcons={false} zoom={3} initialCenter={this.state.initialMapCenter} onClick={this.onMapClick}>
+			  <Map google={window.google} onReady={this.onMapReady} clickableIcons={false} zoom={3} initialCenter={this.state.initialMapCenter} onClick={this.onMapClick} style={style}>
 			 	{farmerMarkers}
 			 	<InfoWindow marker={this.state.activeMarker} visible={this.state.selectedInfoWindow}>
 				    <div>
@@ -82,6 +87,7 @@ class MapContents extends Component {
 					      <span className="col-md-6">
 						      <strong>Vendor Page: </strong><a target="_blank" href={"https://www.goodeggs.com/" + this.props.farmers[this.state.activeFarmer]["farmer_ID"]}><h6>{"goodeggs.com/"+this.props.farmers[this.state.activeFarmer]["farmer_ID"]}</h6> </a>
 						      <strong>Vendor Website: </strong><a target="_blank" href={this.props.farmers[this.state.activeFarmer]["farmer_website"]}><h6>{this.props.farmers[this.state.activeFarmer]["farmer_website"]}</h6> </a>
+						      <strong>Vendor Location: </strong><h6>{this.props.farmers[this.state.activeFarmer]["farmer_address"]}</h6>
 					      </span>
 					    </div>
 					    <div className="row info-window-description">

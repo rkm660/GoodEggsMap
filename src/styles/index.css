@@ -1,6 +1,18 @@
-.navbar {
-	margin-bottom: 0;
-}
-.info-window-description{
+/*.info-window-description{
 	padding-top:20px;
+}*/
+
+.sidebar {
+	width: 20%;
+	float:left;
+	display:inline-block;
+
+}
+
+.map-container {
+	display:inline-block;
+}
+
+.map-container > div {
+	bottom: 0px !important;
 }
