@@ -1,6 +1,6 @@
-/*.info-window-description{
+.info-window-description{
 	padding-top:20px;
-}*/
+}
 
 .sidebar {
 	width: 20%;
@@ -9,10 +9,33 @@
 
 }
 
+.products-bar {
+	width:20%;
+	float:right;
+	display:inline-block;
+}
+
 .map-container {
 	display:inline-block;
 }
 
 .map-container > div {
 	bottom: 0px !important;
+}
+
+.navbar {
+	margin-bottom:0px;
+}
+
+.list-group {
+	max-height: calc(100vh - 50px);
+    overflow-y:scroll; 
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.product-item {
+	border-top:0px;
 }

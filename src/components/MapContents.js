@@ -1,37 +1,26 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/';
 import {Map,Marker,InfoWindow} from 'google-maps-react';
 
-let createHandlers = function(dispatch) {
-	let getData =function(){
-		dispatch(actions.getAllProducts());
-		dispatch(actions.getAllFarmers());
-	}
 
-  return {
-  	getData
-  };
-}
+const mapStateToProps = (state) => ({
+    products: state.data.products,
+    farmers: state.data.farmers,
+});
 
 class MapContents extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
+        console.log(props);
         this.onMarkerClick = this.onMarkerClick.bind(this);
         this.onMapClick = this.onMapClick.bind(this);
         this.onMapReady = this.onMapReady.bind(this);
-        this.handlers = createHandlers(this.props.dispatch);
         this.state = {
         	"activeMarker": null,
         	"activeFarmer": 0,
         	"selectedInfoWindow": false,
         	"initialMapCenter" : {lat: 16.815852,lng: -27.973152}
         };
-    }
-
-    componentDidMount(){
-    	this.handlers.getData();
     }
 
     onMarkerClick(props, marker, e){
@@ -71,7 +60,7 @@ class MapContents extends Component {
 			});
 
 			const style = {
-   				width: '100%',
+   				width: '60%',
     			height: '100%',
 			};
 			return (
@@ -108,10 +97,6 @@ class MapContents extends Component {
     
 }
 
-const mapStateToProps = (state) => ({
-    products: state.data.products,
-    farmers: state.data.farmers,
-});
 
 export default connect(
   mapStateToProps
