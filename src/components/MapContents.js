@@ -19,7 +19,7 @@ class MapContents extends Component {
         	"activeMarker": null,
         	"activeFarmer": 0,
         	"selectedInfoWindow": false,
-        	"initialMapCenter" : {lat: 16.815852,lng: -27.973152}
+        	"initialMapCenter" : {lat: 37.964018,lng: -1.107263}
         };
     }
 
@@ -63,7 +63,7 @@ class MapContents extends Component {
     			height: '100%',
 			};
 			return (
-			  <Map google={window.google} onReady={this.onMapReady} clickableIcons={false} zoom={3} initialCenter={this.state.initialMapCenter} onClick={this.onMapClick} style={style}>
+			  <Map google={window.google} onReady={this.onMapReady} clickableIcons={false} zoom={2} initialCenter={this.state.initialMapCenter} onClick={this.onMapClick} style={style}>
 			 	{farmerMarkers}
 			 	<InfoWindow marker={this.state.activeMarker} visible={this.state.selectedInfoWindow}>
 				    <div>
@@ -89,7 +89,7 @@ class MapContents extends Component {
 			)
 		}
 		else {
-				return (<h4>Loading...</h4>)
+				return (<div><h4></h4></div>)
 			 }
 	    }
 

@@ -32,16 +32,16 @@ class App extends Component {
 	    this.handlers = createHandlers(this.props.dispatch);
 	    this.onCategoryClicked = this.onCategoryClicked.bind(this);
 	    this.state = {
-	        "alcohol": false,
-	        "bakery": false,
-	        "dairy": false,
-	        "drinks": false,
-	        "fish": false,
-	        "meats": false,
-	        "pantry": false,
-	        "prepared": false,
-	        "produce": false,
-	        "snacks": false
+	        "alcohol": true,
+	        "bakery": true,
+	        "dairy": true,
+	        "drinks": true,
+	        "fish": true,
+	        "meats": true,
+	        "pantry": true,
+	        "prepared": true,
+	        "produce": true,
+	        "snacks": true
 	    }
 	}
 
@@ -60,7 +60,7 @@ class App extends Component {
 	  	return (
 	  	<div className="App">
 		    <SideBar farmers={this.props.farmers} products={this.props.products} categories={this.state} categoryClickedCallback={this.onCategoryClicked}/>
-		    <MapContainer farmers={this.props.farmers} products= {this.props.products}/>
+		    <MapContainer farmers={this.props.farmers} products= {this.props.products} categories={this.state}/>
 		    <ProductsBar farmers={this.props.farmers} products={this.props.products} categories={this.state}/>
 	  	</div>
 		);

@@ -16,15 +16,15 @@ class ProductsBar extends Component {
 
   render() {
 
-    if (this.props.products && this.props.farmers){
+    if (this.props.products){
  	    const products = this.props.products.filter(product => {return this.props.categories[product['product_category']];}).map(product => {
-      return (<li key={product['_id'] + '_li'} className="list-group-item product-item"><img key={product['_id'] + '_img'} src={'http://' + product["product_pic"]} width='100%' height='100%'/></li>);
+      return (<li key={product['_id'] + '_li'} className="list-group-item product-item"><a title={product['product_name']} target='_blank' href={'http://www.goodeggs.com' + product['product_link']}><img key={product['_id'] + '_img'} src={'http://' + product["product_pic"]} width='100%' height='100%'/></a></li>);
   	});
     return (
     	<div className="products-bar">
-			<ul className="list-group">
-				{products}
-    		</ul>
+  			  <ul className="list-group">
+  				    {products}
+      		</ul>
     	</div>
     );
 	}
