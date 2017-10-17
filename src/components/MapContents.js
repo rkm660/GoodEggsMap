@@ -24,7 +24,6 @@ class MapContents extends Component {
     }
 
     onMarkerClick(props, marker, e){
-		//console.log(props,marker,e); 
 		this.setState({"activeMarker" : marker});
 		this.setState({"selectedInfoWindow": true});
 		this.setState({"activeFarmer": props.index});
@@ -90,7 +89,7 @@ class MapContents extends Component {
 			)
 		}
 		else {
-				return (null)
+				return (<h4>Loading...</h4>)
 			 }
 	    }
 

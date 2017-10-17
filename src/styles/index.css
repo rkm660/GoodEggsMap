@@ -1,8 +1,17 @@
+html, body {
+    overflow-x: hidden;
+}
+
+.body {
+	font-family: Graphik,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
 .info-window-description{
 	padding-top:20px;
 }
 
 .sidebar {
+	position: relative;
 	width: 20%;
 	float:left;
 	display:inline-block;
@@ -10,6 +19,7 @@
 }
 
 .products-bar {
+	position: relative;
 	width:20%;
 	float:right;
 	display:inline-block;
@@ -37,5 +47,13 @@
 }
 
 .product-item {
-	border-top:0px;
+	border:0px;
+}
+
+.product-category-item {
+	text-align:center;
+	padding-top: 5px;
+	padding-right: 30px;
+	padding-left:30px;
+	height:calc((100vh - 50px) / 10);
 }
