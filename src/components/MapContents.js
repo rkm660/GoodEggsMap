@@ -5,13 +5,12 @@ import {Map,Marker,InfoWindow} from 'google-maps-react';
 
 const mapStateToProps = (state) => ({
     products: state.data.products,
-    farmers: state.data.farmers,
+    farmers: state.data.farmers
 });
 
 class MapContents extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.onMarkerClick = this.onMarkerClick.bind(this);
         this.onMapClick = this.onMapClick.bind(this);
         this.onMapReady = this.onMapReady.bind(this);
@@ -19,7 +18,8 @@ class MapContents extends Component {
         	"activeMarker": null,
         	"activeFarmer": 0,
         	"selectedInfoWindow": false,
-        	"initialMapCenter" : {lat: 37.964018,lng: -1.107263}
+        	"initialMapCenter" : {lat: 37.964018,lng: -1.107263},
+        	"farmerCategoryMap" : {}
         };
     }
 
@@ -27,20 +27,49 @@ class MapContents extends Component {
 		this.setState({"activeMarker" : marker});
 		this.setState({"selectedInfoWindow": true});
 		this.setState({"activeFarmer": props.index});
+		props.map.setZoom(props.map.getZoom() + 3)
 		props.map.panTo(marker.getPosition());
 		props.map.panBy(0,-200);
 	}
 
 	onMapClick(props, map, e){
-		console.log(props, map, e, this.state);
+		if (this.state.selectedInfoWindow === true){
+			map.setZoom(map.getZoom() - 3);
+		}
 		this.setState({activeMarker : null});
 		this.setState({selectedInfoWindow: false});
 		this.setState({"activeFarmer": 0});
 	}
 
-	onMapReady(mapProps, map){
-		console.log("Map Ready!", mapProps, map);
-		this.setState({initialMapCenter: map.getCenter()})
+	onMapReady(mapProps, map) {
+	    this.setState({ initialMapCenter: map.getCenter() });
+	    window.google.maps.event.addListener(map, 'center_changed', function() {
+	        checkBounds(map);
+	    });
+	    // If the map position is out of range, move it back
+	    function checkBounds(map) {
+
+	        var latNorth = map.getBounds().getNorthEast().lat();
+	        var latSouth = map.getBounds().getSouthWest().lat();
+	        var newLat;
+
+	        if (latNorth < 85 && latSouth > -85) /* in both side -> it's ok */
+	            return;
+	        else {
+	            if (latNorth > 85 && latSouth < -85) /* out both side -> it's ok */
+	                return;
+	            else {
+	                if (latNorth > 85)
+	                    newLat = map.getCenter().lat() - (latNorth - 85); /* too north, centering */
+	                if (latSouth < -85)
+	                    newLat = map.getCenter().lat() - (latSouth + 85); /* too south, centering */
+	            }
+	        }
+	        if (newLat) {
+	            var newCenter = new window.google.maps.LatLng(newLat, map.getCenter().lng());
+	            map.setCenter(newCenter);
+	        }
+	    }
 	}
 
     render() {

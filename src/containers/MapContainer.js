@@ -5,10 +5,6 @@ import MapContents from '../components/MapContents'
 
 class MapContainer extends Component {
 
-	constructor(props){
-		super(props);
-	}
-
 	render() {
 		return (<div className="map-container"><MapContents/></div>);
 	}

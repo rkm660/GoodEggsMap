@@ -18,7 +18,6 @@ let createHandlers = function(dispatch) {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
     return ({
         products: state.data.products,
         farmers: state.data.farmers,
@@ -28,7 +27,6 @@ class App extends Component {
 
 	constructor(props) {
 	    super(props);
-	    console.log(this.props);
 	    this.handlers = createHandlers(this.props.dispatch);
 	    this.onCategoryClicked = this.onCategoryClicked.bind(this);
 	    this.state = {
@@ -53,14 +51,13 @@ class App extends Component {
 		let updatedState = this.state;
 		updatedState[category] = !updatedState[category];
 		this.setState(updatedState);
-		console.log(this.state);
 	}
 
 	render() {
 	  	return (
 	  	<div className="App">
 		    <SideBar farmers={this.props.farmers} products={this.props.products} categories={this.state} categoryClickedCallback={this.onCategoryClicked}/>
-		    <MapContainer farmers={this.props.farmers} products= {this.props.products} categories={this.state}/>
+		    <MapContainer farmers={this.props.farmers} products={this.props.products} categories={this.state}/>
 		    <ProductsBar farmers={this.props.farmers} products={this.props.products} categories={this.state}/>
 	  	</div>
 		);

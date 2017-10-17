@@ -6,24 +6,25 @@ class SideBar extends Component {
 		super(props);
 		this.onCategoryClicked = this.onCategoryClicked.bind(this);
 		this.toggleClass = this.toggleClass.bind(this);
-		this.state = {
+
+		const initialState = {
 			categoriesChecked : {}
 		};
-		console.log(props);
 		for (let category in props.categories){
-			this.state.categoriesChecked[category] = 'list-group-item-success';
+			initialState.categoriesChecked[category] = 'list-group-item-success';
 		}
+		this.state = initialState
 	}
 
 	onCategoryClicked(category){
-		console.log(this.props.categories);
 		this.props.categoryClickedCallback(category);
 		this.toggleClass(category);
 	}
 
 	toggleClass(category){
-		this.state.categoriesChecked[category] = this.state.categoriesChecked[category] == 'list-group-item-success' ? '' : 'list-group-item-success';
-		console.log(this.state.categoriesChecked);
+		let updatedState = this.state
+		updatedState.categoriesChecked[category] = this.state.categoriesChecked[category] === 'list-group-item-success' ? '' : 'list-group-item-success';
+		this.setState(updatedState);
 	}
 
   	render() {
@@ -31,6 +32,7 @@ class SideBar extends Component {
 	    return (
 	    	<div className="sidebar">
 	    		<nav className="navbar navbar-inverse bg-inverse">
+					<a className="navbar-brand"></a>
 				</nav>
 				<ul className="list-group">
 				  <li onClick={() => this.onCategoryClicked('alcohol')} className={"list-group-item product-category-item " + this.state.categoriesChecked['alcohol']}><h3>Alcohol</h3></li>
