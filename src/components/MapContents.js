@@ -42,10 +42,15 @@ class MapContents extends Component {
 	}
 
 	onMapReady(mapProps, map) {
-	    this.setState({ initialMapCenter: map.getCenter() });
+		document.getElementsByClassName("map-container")[0].parentElement.style.height = '0px';
 	    window.google.maps.event.addListener(map, 'center_changed', function() {
 	        checkBounds(map);
 	    });
+
+	    window.google.maps.event.addListenerOnce(map, 'idle', function(){
+	        checkBounds(map);
+		});	
+	    this.setState({ initialMapCenter: map.getCenter() });
 	    // If the map position is out of range, move it back
 	    function checkBounds(map) {
 

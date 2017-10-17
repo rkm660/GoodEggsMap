@@ -2,8 +2,9 @@ html, body {
     overflow-x: hidden;
 }
 
-.body {
-	font-family: Graphik,"Helvetica Neue",Helvetica,Arial,sans-serif;
+.navbar-brand {
+  	background: url(https://pbs.twimg.com/profile_images/507661533573156864/FFQTd8II.png) center / contain no-repeat;
+  	width: 100%;
 }
 
 .info-window-description{
@@ -15,7 +16,6 @@ html, body {
 	width: 20%;
 	float:left;
 	display:inline-block;
-
 }
 
 .products-bar {
@@ -57,3 +57,4 @@ html, body {
 	padding-left:30px;
 	height:calc((100vh - 50px) / 10);
 }
+
