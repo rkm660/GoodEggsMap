@@ -31,8 +31,8 @@ class SideBar extends Component {
 
 	    return (
 	    	<div className="sidebar">
-	    		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-			    	<a class="navbar-brand" href="http://www.goodeggs.com" target="_blank"></a>
+	    		<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+			    	<a className="navbar-brand" href="http://www.goodeggs.com" target="_blank"></a>
 			  	</nav>
 				<ul className="list-group">
 				  <li onClick={() => this.onCategoryClicked('alcohol')} className={"list-group-item product-category-item " + this.state.categoriesChecked['alcohol']}><h3>Alcohol</h3></li>
