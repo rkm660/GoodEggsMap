@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
     getFarmers: (cb) => {
-        axios.get(' http://localhost:3100/api/farmers')
+        axios.get('https://radiant-ravine-52401.herokuapp.com/api/farmers')
             .then(function(response) {
                 cb(response.data);
 
@@ -12,7 +12,7 @@ export default {
             })
     },
     getProducts: (cb) => {
-        axios.get(' http://localhost:3100/api/products')
+        axios.get('https://radiant-ravine-52401.herokuapp.com/api/products')
             .then(function(response) {
                 cb(response.data);
             })
