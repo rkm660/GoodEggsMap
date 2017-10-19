@@ -11,7 +11,7 @@ class SideBar extends Component {
 			categoriesChecked : {}
 		};
 		for (let category in props.categories){
-			initialState.categoriesChecked[category] = 'list-group-item-success';
+			initialState.categoriesChecked[category] = '';
 		}
 		this.state = initialState
 	}

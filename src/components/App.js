@@ -30,16 +30,16 @@ class App extends Component {
 	    this.handlers = createHandlers(this.props.dispatch);
 	    this.onCategoryClicked = this.onCategoryClicked.bind(this);
 	    this.state = {
-	        "alcohol": true,
-	        "bakery": true,
-	        "dairy": true,
-	        "drinks": true,
-	        "fish": true,
-	        "meats": true,
-	        "pantry": true,
-	        "prepared": true,
-	        "produce": true,
-	        "snacks": true
+	        "alcohol": false,
+	        "bakery": false,
+	        "dairy": false,
+	        "drinks": false,
+	        "fish": false,
+	        "meats": false,
+	        "pantry": false,
+	        "prepared": false,
+	        "produce": false,
+	        "snacks": false
 	    }
 	}
 
