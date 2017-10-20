@@ -30,16 +30,18 @@ class App extends Component {
 	    this.handlers = createHandlers(this.props.dispatch);
 	    this.onCategoryClicked = this.onCategoryClicked.bind(this);
 	    this.state = {
-	        "alcohol": false,
-	        "bakery": false,
-	        "dairy": false,
-	        "drinks": false,
-	        "fish": false,
-	        "meats": false,
-	        "pantry": false,
-	        "prepared": false,
-	        "produce": false,
-	        "snacks": false
+	        "categories" : {
+	        	"alcohol": false,
+		        "bakery": false,
+		        "dairy": false,
+		        "drinks": false,
+		        "fish": false,
+		        "meat": false,
+		        "pantry": false,
+		        "prepared": false,
+		        "produce": false,
+		        "snacks": false
+	        }
 	    }
 	}
 
@@ -47,18 +49,20 @@ class App extends Component {
 	    this.handlers.getData();
 	}
 
+
 	onCategoryClicked(category){
-		let updatedState = this.state;
-		updatedState[category] = !updatedState[category];
-		this.setState(updatedState);
+		let updatedStateCategories = Object.assign({}, this.state.categories);
+		updatedStateCategories[category] = !updatedStateCategories[category];
+
+		this.setState({"categories" : updatedStateCategories});
 	}
 
 	render() {
 	  	return (
 	  	<div className="App">
-		    <SideBar farmers={this.props.farmers} products={this.props.products} categories={this.state} categoryClickedCallback={this.onCategoryClicked}/>
-		    <MapContainer farmers={this.props.farmers} products={this.props.products} categories={this.state}/>
-		    <ProductsBar farmers={this.props.farmers} products={this.props.products} categories={this.state}/>
+		    <SideBar farmers={this.props.farmers} products={this.props.products} categories={this.state.categories} categoryClickedCallback={this.onCategoryClicked} productsExposed={this.state.productsExposed}/>
+		    <MapContainer farmers={this.props.farmers} products={this.props.products} categories={this.state.categories}/>
+		    <ProductsBar farmers={this.props.farmers} products={this.props.products} categories={this.state.categories}/>
 	  	</div>
 		);
 	}

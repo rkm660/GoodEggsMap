@@ -19,7 +19,7 @@ class MapContents extends Component {
         	"activeFarmer": 0,
         	"selectedInfoWindow": false,
         	"initialMapCenter" : {lat: 37.964018,lng: -1.107263},
-        	"farmerCategoryMap" : {}
+        	
         };
     }
 
@@ -42,7 +42,7 @@ class MapContents extends Component {
 	}
 
 	onMapReady(mapProps, map) {
-		document.getElementsByClassName("map-container")[0].parentElement.style.height = '0px';
+		//document.getElementsByClassName("map-container")[0].parentElement.style.height = '0px';
 	    window.google.maps.event.addListener(map, 'center_changed', function() {
 	        checkBounds(map);
 	    });
